@@ -11,25 +11,25 @@
     <title>Currency Convertor</title>
   </head>
   <body
-    class="bg-amber-100 flex justify-center align-middle font-serif min-h-screen"
+    class="bg-amber-100 flex justify-center align-middle font-inter min-h-screen"
   >
     <main>
-      <form action="">
+      <form>
         <div
-          class="h-80 w-80 relative top-34 bg-white rounded-2xl flex flex-col space-y-2 p-2"
+          class="shadow-2xl w-full max-w-sm h-80 relative top-34 bg-white rounded-2xl flex flex-col space-y-2 p-2 transition-all duration-300"
         >
-          <h2 id="heading" class="p-2 px-4 font-semibold text-xl">
+          <h2 id="heading" class="p-2 px-4 text-2xl font-bold tracking-wide">
             Currency Convertor
           </h2>
           <div
             id="inputArea"
             class="flex flex-col justify-center space-y-2 px-4"
           >
-            <label for="amount" class="text-sm">Enter Amount</label>
+            <label for="amount" class="text-sm font-medium">Enter Amount</label>
             <input
               type="number"
               id="amount"
-              class="bg-white-300 border-gray-400 border rounded-lg h-8 p-4 font-mono"
+              class="bg-white-300 border-gray-400 border rounded-lg h-8 p-4 hover:border-fuchsia-300 focus:ring-2 focus:ring-fuchsia-400 focus:outline-none"
               value="1"
             />
           </div>
@@ -38,7 +38,10 @@
             <label for="to" class="text-sm font-medium">To</label>
           </div>
 
-          <div id="selection-container" class="flex justify-between px-4">
+          <div
+            id="selection-container"
+            class="flex justify-between px-4 space-x-4"
+          >
             <div
               id="first"
               class="border-gray-400 border rounded-lg flex justify-start p-2"
@@ -51,23 +54,31 @@
             </div>
 
             <div class="m-auto">
-              <i class="fa-solid fa-arrow-right-arrow-left fa-xl"></i>
+              <button
+                id="reverseBtn"
+                class="w-8 h-8 rounded-full bg-fuchsia-400 text-white shadow-md hover:bg-fuchsia-600 hover:rotate-180 transition-all duration-300 cursor-pointer"
+              >
+                <i class="fa-solid fa-arrow-right-arrow-left fa-xl"></i>
+              </button>
             </div>
             <div
               id="sec"
-              class="border-gray-400 border rounded-lg flex justify-start p-2"
+              class="border-gray-400 border rounded-lg flex justify-start p-2 ml-4"
             >
               <img
                 src="https://flagsapi.com/PK/flat/64.png"
-                class="w-8 h-8 m-auto"
+                class="w-8 h-8 m-auto transition-all duration-300"
               />
               <select id="to"></select>
             </div>
           </div>
-          <div id="result" class="mx-6 mt-2 w-fit px-2 font-medium"></div>
+          <div
+            id="result"
+            class="mx-6 mt-2 w-fit px-2 bg-fuchsia-100 rounded-lg font-medium text-fuchsia-900"
+          ></div>
           <button
             id="getResult"
-            class="bg-fuchsia-800 mx-6 mt-4 h-8 rounded-lg text-white cursor-pointer"
+            class="mx-6 mt-4 h-8 rounded-lg text-white cursor-pointer bg-fuchsia-700 hover:bg-fuchsia-900"
           >
             Get Exchange Rate
           </button>

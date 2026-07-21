@@ -2,10 +2,18 @@ const BASE_URL =
   "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies";
 const selectors = document.querySelectorAll("select");
 const btn = document.querySelector("#getResult");
+const revBtn = document.querySelector("#reverseBtn");
 const input = document.querySelector("#amount");
 const fromCurrency = document.querySelector("#from");
 const toCurrency = document.querySelector("#to");
 const resultBox = document.querySelector("#result");
+
+const updateFlag = (select) => {
+  let currencyCode = select.value;
+  let countryCode = countryList[currencyCode];
+  let img = select.parentElement.querySelector("img");
+  img.setAttribute("src", `https://flagsapi.com/${countryCode}/flat/64.png`);
+};
 
 for (let select of selectors) {
   for (let code in countryList) {
@@ -23,13 +31,6 @@ for (let select of selectors) {
     updateFlag(ev.target);
   });
 }
-
-const updateFlag = (select) => {
-  let currencyCode = select.value;
-  let countryCode = countryList[currencyCode];
-  let img = select.parentElement.querySelector("img");
-  img.setAttribute("src", `https://flagsapi.com/${countryCode}/flat/64.png`);
-};
 
 const displayResult = (inputAmount, exchangeAmount) => {
   resultBox.innerText = `${inputAmount} ${fromCurrency.value} = ${exchangeAmount.toFixed(4)} ${toCurrency.value}`;
@@ -61,10 +62,25 @@ const updateExchangeRate = async () => {
     );
   }
 };
+
+const reverseFlags = () => {
+  let fromSelector = selectors[0];
+  let toSelector = selectors[1];
+  let temp = fromSelector.value;
+  fromSelector.value = toSelector.value;
+  toSelector.value = temp;
+  updateFlag(fromSelector);
+  updateFlag(toSelector);
+};
+
 btn.addEventListener("click", (ev) => {
   ev.preventDefault();
   updateExchangeRate();
 });
 window.addEventListener("load", () => {
   updateExchangeRate();
+});
+revBtn.addEventListener("click", (ev) => {
+  ev.preventDefault();
+  reverseFlags();
 });
