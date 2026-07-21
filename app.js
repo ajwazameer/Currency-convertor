@@ -1,22 +1,14 @@
 const BASE_URL =
   "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies";
-let selectors = document.querySelectorAll("select");
-let btn = document.querySelector("#getResult");
-let input = document.querySelector("#amount");
-let fromCurrency = document.querySelector("#from");
-let toCurrency = document.querySelector("#to");
-let inputBox = document.querySelector("#input");
-let outputBox = document.querySelector("#output");
-
-let updateFlag = (select) => {
-  let currencyCode = select.value;
-  let countryCode = countryList[currencyCode];
-  let img = select.parentElement.querySelector("img");
-  img.setAttribute("src", `https://flagsapi.com/${countryCode}/flat/64.png`);
-};
+const selectors = document.querySelectorAll("select");
+const btn = document.querySelector("#getResult");
+const input = document.querySelector("#amount");
+const fromCurrency = document.querySelector("#from");
+const toCurrency = document.querySelector("#to");
+const resultBox = document.querySelector("#result");
 
 for (let select of selectors) {
-  for (code in countryList) {
+  for (let code in countryList) {
     let op = document.createElement("option");
     op.innerText = code;
     op.value = code;
@@ -31,11 +23,19 @@ for (let select of selectors) {
     updateFlag(ev.target);
   });
 }
-const displayResult = (inputAmount, exchangeAmount) => {
-  inputBox.innerText = `${inputAmount} ${fromCurrency.value} = `;
-  outputBox.innerText = `${exchangeAmount.toFixed(4)} ${toCurrency.value}`;
-  console.log(outputBox.innerText);
+
+const updateFlag = (select) => {
+  let currencyCode = select.value;
+  let countryCode = countryList[currencyCode];
+  let img = select.parentElement.querySelector("img");
+  img.setAttribute("src", `https://flagsapi.com/${countryCode}/flat/64.png`);
 };
+
+const displayResult = (inputAmount, exchangeAmount) => {
+  resultBox.innerText = `${inputAmount} ${fromCurrency.value} = ${exchangeAmount.toFixed(4)} ${toCurrency.value}`;
+  console.log(resultBox.innerText);
+};
+
 const updateExchangeRate = async () => {
   let inputAmount = Number(input.value);
   console.log(inputAmount);
@@ -55,10 +55,16 @@ const updateExchangeRate = async () => {
     let exchangeAmount = inputAmount * rate;
     displayResult(inputAmount, exchangeAmount);
   } catch (err) {
-    displayResult(inputAmount, "ERROR 404");
+    displayResult(
+      inputAmount,
+      "Unable to fetch exchange rates.Please try again.",
+    );
   }
 };
 btn.addEventListener("click", (ev) => {
   ev.preventDefault();
+  updateExchangeRate();
+});
+window.addEventListener("load", () => {
   updateExchangeRate();
 });
