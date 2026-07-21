@@ -29,7 +29,7 @@
             <input
               type="number"
               id="amount"
-              class="bg-white-300 border-gray-400 border rounded-lg h-8 p-4"
+              class="bg-white-300 border-gray-400 border rounded-lg h-8 p-4 font-mono"
               value="1"
             />
           </div>
@@ -47,11 +47,7 @@
                 src="https://flagsapi.com/IN/flat/64.png"
                 class="w-8 h-8 m-auto"
               />
-              <select id="from" class="max-h-32">
-                <option value="INR">INR</option>
-                <option value="USD">USD</option>
-                <option value="RS">RS</option>
-              </select>
+              <select id="from"></select>
             </div>
 
             <div class="m-auto">
@@ -65,20 +61,15 @@
                 src="https://flagsapi.com/PK/flat/64.png"
                 class="w-8 h-8 m-auto"
               />
-              <select id="to">
-                <option value="RS">RS</option>
-                <option value="USD">USD</option>
-                <option value="INR">INR</option>
-              </select>
+              <select id="to"></select>
             </div>
           </div>
           <div
             id="result"
-            class="flex justify-start mx-6 mt-2 bg-pink-200 w-fit rounded-lg px-2"
+            class="flex justify-start mx-6 mt-2 w-fit rounded-lg px-2 font md:text-sm flex-wrap font-medium"
           >
-            <div id="input" class="mr-2">Hello</div>
-            =
-            <div id="ouput" class="ml-2">Hi</div>
+            <div id="input" class="mr-2"></div>
+            <div id="output" class="ml-2"></div>
           </div>
           <button
             id="getResult"
