@@ -6,7 +6,7 @@ A responsive Currency Converter built using **HTML**, **Tailwind CSS**, and **Va
 
 ## Preview
 
-![Screenshot Of UI](image.png)
+![Screenshot of UI](image-1.png)
 
 ---
 
