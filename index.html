@@ -10,7 +10,9 @@
     ></script>
     <title>Currency Convertor</title>
   </head>
-  <body class="bg-amber-100 flex justify-center align-middle font-serif">
+  <body
+    class="bg-amber-100 flex justify-center align-middle font-serif min-h-screen"
+  >
     <main>
       <form action="">
         <div
@@ -45,7 +47,7 @@
                 src="https://flagsapi.com/IN/flat/64.png"
                 class="w-8 h-8 m-auto"
               />
-              <select id="from">
+              <select id="from" class="max-h-32">
                 <option value="INR">INR</option>
                 <option value="USD">USD</option>
                 <option value="RS">RS</option>
@@ -87,6 +89,7 @@
         </div>
       </form>
     </main>
+    <script src="codes.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
