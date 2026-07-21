@@ -132,6 +132,8 @@ GitHub: https://github.com/ajwazameer
 
 ---
 
-## License
+## Live Demo
 
-This project is licensed under the MIT License.
+Checkout Live Demo at: https://ajwazameer.github.io/Currency-convertor/
+
+---
